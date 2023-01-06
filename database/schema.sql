@@ -18,8 +18,28 @@ create table customers (
 
 select "Inserting records: 5" as "";
 
-LOAD DATA INFILE '/database/data.csv' 
+LOAD DATA INFILE '/database/data.csv'
 INTO TABLE customers
-FIELDS TERMINATED BY ':' 
+FIELDS TERMINATED BY ':'
+ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
+
+drop schema if exists estore;
+
+select "Creating estore database" as "";
+
+create database estore;
+
+use estore;
+
+select "Creating orders table" as "";
+
+create table orders (
+    orderId varchar(8) not null,
+    deliveryId varchar(128) not null,
+    name varchar(32) not null,
+    status DEFAULT "Pending"
+	primary key(orderId)
+    foreign key(name) references customers(name)
+);

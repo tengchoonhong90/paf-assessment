@@ -62,5 +62,11 @@ public class Order {
 
 		return uuidString;
 	}
+
+	public String generateDeliveryID() {
+		UUID uuid = UUID.randomUUID();
+		String uuidString = uuid.toString();
+		return uuidString;
+	}
 }
 
