@@ -16,5 +16,19 @@ public class Queries {
     where orders.orderId = ?
     group by orderId asc;
     */
-    public static final String SQL_SELECT_ORDER = "select name, address, email, orderId, item, quantity from customers inner join orders on customers.name = orders.name inner join items on orders.orderId = items.orderId where orders.orderId = ? group by orderId asc;";
+    public static final String SQL_SELECT_ORDER_AND_ORDER_STATUS_AND_NAME_BY_ORDER_ID = "select name, address, email, orderId, item, quantity from customers inner join orders on customers.name = orders.name inner join items on orders.orderId = items.orderId where orders.orderId = ? group by orderId asc;";
+
+    /*
+    update order_status
+    set order_id = ?, delivery_id = ?, status = ?, status_update = ?
+    where order_id = ?
+     */
+    public static final String SQL_UPDATE_ORDER_STATUS_AFTER_SUCCESSFUL_DISPATCH="update order_status set order_id = ?, delivery_id = ?, status = ?, status_update = ? where order_id = ?";
+
+    /*
+    update order_status
+    set order_id = ?, status = "pending", status_update = ?
+    where order_id = ?
+     */
+    public static final String SQL_UPDATE_ORDER_STATUS_AFTER_UNSUCCESSFUL_DISPATCH = "update order_status set order_id = ?, status = 'pending', status_update = ? where order_id = ?";
 }
