@@ -21,7 +21,7 @@ import vttp2022.paf.assessment.eshop.respositories.CustomerRepository;
 import vttp2022.paf.assessment.eshop.respositories.OrderRepository;
 
 @Controller
-@RequestMapping(path="/")
+@RequestMapping
 public class OrderController {
 
 	@Autowired

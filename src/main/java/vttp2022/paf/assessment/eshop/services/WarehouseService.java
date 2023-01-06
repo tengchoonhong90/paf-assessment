@@ -17,14 +17,12 @@ public class WarehouseService {
 	public OrderStatus dispatch(Order order) {
 
 		// TODO: Task 4
-		final String urlString = "http://paf.chuklee.com/dispatch/"+order.getOrderId();
+		final String urlString = "http://paf.chuklee.com/dispatch/" + order.getOrderId();
 
 		String url = UriComponentsBuilder.fromUriString(urlString).toUriString();
 
 		RequestEntity<Void> req = RequestEntity.get(url).accept(MediaType.APPLICATION_JSON).build();
 		RestTemplate template = new RestTemplate();
-
-		
 
 		return null;
 	}
