@@ -9,12 +9,11 @@ use eshop;
 select "Creating customers table" as "";
 
 create table customers (
-    customer_id varchar(8) not null,
     name varchar(32) unique,
     address varchar(128) not null unique,
     email varchar(128) not null unique,
 
-	primary key(customer_id)
+	primary key(name)
 );
 
 select "Inserting records: 5" as "";

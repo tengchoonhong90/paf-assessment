@@ -3,6 +3,7 @@ package vttp2022.paf.assessment.eshop.models;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.UUID;
 
 // DO NOT CHANGE THIS CLASS
 public class Order {
@@ -53,5 +54,13 @@ public class Order {
 	public List<LineItem> getLineItems() { return this.lineItems; }
 	public void setLineItems(List<LineItem> lineItems) { this.lineItems = lineItems; }
 	public void addLineItem(LineItem lineItem) { this.lineItems.add(lineItem); }
+
+	//Generate 8 char long order ID using UUID class
+	public String generateOrderID(){
+		UUID uuid = UUID.randomUUID();
+		String uuidString = uuid.toString().replace("-","").substring(0,8);
+
+		return uuidString;
+	}
 }
 

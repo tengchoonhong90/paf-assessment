@@ -1,14 +1,31 @@
 package vttp2022.paf.assessment.eshop.respositories;
 
-import java.util.Optional;
+import java.util.LinkedList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import vttp2022.paf.assessment.eshop.models.Customer;
+import static vttp2022.paf.assessment.eshop.respositories.Queries.*;
 
 public class CustomerRepository {
 
-	// You cannot change the method's signature
-	public Optional<Customer> findCustomerByName(String name) {
-		// TODO: Task 3 
+	@Autowired
+		private JdbcTemplate jdbcTemplate;
 
+	// You cannot change the method's signature
+	public List<Customer> findCustomerByName(String name) {
+		// TODO: Task 3
+		final SqlRowSet rs = jdbcTemplate.queryForRowSet(SQL_SELECT_CUSTOMER_BY_NAME, name);
+		final List<Customer> customer = new LinkedList<>();
+		
+		while (rs.next())
+			customer.add(Customer.create(rs));
+
+		return customer;
 	}
 }
+
+
