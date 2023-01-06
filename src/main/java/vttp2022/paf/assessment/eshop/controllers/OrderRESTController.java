@@ -15,12 +15,5 @@ public class OrderRESTController {
     
     @Autowired
     private WarehouseService wSvc;
-
-    @PostMapping(value="http://paf.chuklee.com/dispatch/", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public JsonObject dispatch() {
-        wSvc.dispatch(null);
-
-        return null;
-    }
     
 }

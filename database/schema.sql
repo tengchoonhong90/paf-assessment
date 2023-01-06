@@ -53,6 +53,5 @@ create table order_status (
     status_update DATETIME,
 
     primary key(order_id)
-    foreign key(order_id) references orders(orderId)
-    
+    foreign key(order_id) references orders(orderId) 
 );
