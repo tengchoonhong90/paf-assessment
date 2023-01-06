@@ -29,10 +29,19 @@ select "Creating orders table" as "";
 
 create table orders (
     orderId varchar(8) not null,
-    deliveryId varchar(128) not null,
     name varchar(32) not null,
 	primary key(orderId)
     foreign key(name) references customers(name)
+);
+
+select "Creating items table" as "";
+
+create table items (
+    orderId varchar(8) not null,
+    item varchar(128) not null,
+    quantity int not null,
+    primary key(orderId)
+    foreign key(orderId) references orders(orderId)
 );
 
 select "Creating order_status table" as "";
