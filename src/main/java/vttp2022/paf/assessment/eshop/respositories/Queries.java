@@ -31,4 +31,25 @@ public class Queries {
     where order_id = ?
      */
     public static final String SQL_UPDATE_ORDER_STATUS_AFTER_UNSUCCESSFUL_DISPATCH = "update order_status set order_id = ?, status = 'pending', status_update = ? where order_id = ?";
+
+    /*
+    select count(name)
+    from orders
+    inner join order_status
+    on orders.orderId = order_status.order_id
+    where order_status.status = 'pending'
+     */
+
+    public static final String SQL_COUNT_ALL_PENDING_ORDERS_BY_CUSTOMER_NAME = "select count(name) from orders inner join order_status on orders.orderId = order_status.order_id where order_status.status = 'pending'";
+
+    /*
+    select count(name)
+    from orders
+    inner join order_status
+    on orders.orderId = order_status.order_id
+    where order_status.status = 'dispatched'
+     */
+
+    public static final String SQL_COUNT_ALL_DISPATCHED_ORDERS_BY_CUSTOMER_NAME = "select count(name) from orders inner join order_status on orders.orderId = order_status.order_id where order_status.status = 'dispatched'";
+
 }
