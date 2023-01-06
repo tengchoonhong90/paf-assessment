@@ -11,6 +11,10 @@ import vttp2022.paf.assessment.eshop.services.WarehouseService;
 public class OrderRESTController {
     
     @Autowired
-    private WarehouseService wSvc;
+    private WarehouseService warehouseService;
+
+    public static String dispatch() {
+        return null;
+    }
     
 }
