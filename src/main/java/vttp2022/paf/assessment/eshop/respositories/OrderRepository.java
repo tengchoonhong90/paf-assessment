@@ -9,8 +9,6 @@ import vttp2022.paf.assessment.eshop.models.Order;
 
 import static vttp2022.paf.assessment.eshop.respositories.Queries.*;
 
-import java.util.List;
-
 @Repository
 public class OrderRepository {
 
@@ -21,6 +19,8 @@ public class OrderRepository {
 	public Integer createOrder(Order order, LineItem lineItem) {
 
 		String orderID = order.generateOrderID();
+		
+		jdbcTemplate.update(SQL_INSERT_ITEM, lineItem.getItem(), lineItem.getQuantity());
 		
 		return jdbcTemplate.update(SQL_INSERT_ORDER, orderID, order.getName());
 
