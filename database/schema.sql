@@ -25,21 +25,25 @@ ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
-drop schema if exists estore;
-
-select "Creating estore database" as "";
-
-create database estore;
-
-use estore;
-
 select "Creating orders table" as "";
 
 create table orders (
     orderId varchar(8) not null,
     deliveryId varchar(128) not null,
     name varchar(32) not null,
-    status DEFAULT "Pending"
 	primary key(orderId)
     foreign key(name) references customers(name)
+);
+
+select "Creating order_status table" as "";
+
+create table order_status (
+    order_id varchar(8) not null,
+    delivery_id varchar(128) not null,
+    status ENUM ("pending", "dispatch"),
+    status_update DATETIME,
+
+    primary key(order_id)
+    foreign key(order_id) references orders(orderId)
+    
 );
